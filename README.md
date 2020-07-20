@@ -1,4 +1,5 @@
-# RSFW (Amit Klein, Safebreach)
+# RSFW 
+## Author: Amit Klein, Safebreach
 Request Smuggling Firewall - a PoC for my BlackHat US 2020 paper [HTTP Request Smuggling in 2020](https://www.blackhat.com/us-20/briefings/schedule/#http-request-smuggling-in---new-variants-new-defenses-and-new-challenges-20019). 
 
 The Request Smuggling Firewall PoC project consists of two C++ cross-platform libraries: 
