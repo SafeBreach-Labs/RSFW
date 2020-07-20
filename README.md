@@ -15,21 +15,21 @@ Compiling (Linux):
 Hints for running RSFW with a single web/proxy process:
 - nginx\
 LD_PRELOAD=RSFW.so nginx -g "master_process off;"
-- node.js
+- node.js\
 LD_PRELOAD=RSFW.so node 
-- Apache2
-source /etc/apache2/envvars
+- Apache2\
+source /etc/apache2/envvars\
 LD_PRELOAD=RSFW.so apache2 -X 
-- Squid
+- Squid\
 LD_PRELOAD=RSFW.so squid -N 
-- Tomcat 9
-export JAVA_HOME=/usr/lib/jvm/default-java
-export JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
-export CATALINA_BASE=/opt/tomcat/latest
-export CATALINA_HOME=/opt/tomcat/latest
-export CATALINA_PID=/opt/tomcat/latest/temp/tomcat.pid
-export CATALINA_OPTS="-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+- Tomcat 9\
+export JAVA_HOME=/usr/lib/jvm/default-java\
+export JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"\
+export CATALINA_BASE=/opt/tomcat/latest\
+export CATALINA_HOME=/opt/tomcat/latest\
+export CATALINA_PID=/opt/tomcat/latest/temp/tomcat.pid\
+export CATALINA_OPTS="-Xms512M -Xmx1024M -server -XX:+UseParallelGC"\
 LD_PRELOAD=RSFW.so /usr/lib/jvm/default-java/bin/java -Djava.util.logging.config.file=/opt/tomcat/latest/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Xms512M -Xmx1024M -server -XX:+UseParallelGC -Dignore.endorsed.dirs= -classpath /opt/tomcat/latest/bin/bootstrap.jar:/opt/tomcat/latest/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat/latest -Dcatalina.home=/opt/tomcat/latest -Djava.io.tmpdir=/opt/tomcat/latest/temp org.apache.catalina.startup.Bootstrap start
-- Abyss X1
+- Abyss X1\
 LD_PRELOAD=RSFW.so abyssws-x64 -r
 
