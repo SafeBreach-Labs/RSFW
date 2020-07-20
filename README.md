@@ -10,9 +10,14 @@ Specific APIs and deployment:
 - Deployment: the current deployment model has SAL and RSFW compiled into a shared library file (.so/.dll), together with the FuncHook function hooking library. The platform specific SAL implementation contains a startup routine (\_init for Linux, DllMain for Windows) that invokes the FuncHook hooking API needed for the specific platform. The shared library needs to be injected into the target process (this functionality is not provided).
 
 Compiling (Linux):
+- Obtain [FuncHook](https://github.com/kubo/funchook)
 - g++ -shared -fPIC SAL_Linux.cpp RSFW.cpp -o RSFW.so -lfunchook
 
-Hints for running RSFW with a single web/proxy process:
+Compiling (Windows):
+- Obtain [FuncHook](https://github.com/kubo/funchook)
+- Compile SAL_Windows.cpp and RSFW.cpp into a DLL (with funchook.lib).
+
+Hints for running RSFW on Linux with a single web/proxy process:
 - nginx\
 LD_PRELOAD=RSFW.so nginx -g "master_process off;"
 - node.js\
