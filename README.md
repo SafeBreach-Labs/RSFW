@@ -9,7 +9,7 @@ Specific APIs and deployment:
 - Consumer API: the SAL consumer (e.g. RSFW) must inherit from AbstractSocket. The consumer must register with SAL by initializing (at load time) SAL::gen_f to a factory object that produces AbstractSocket objects with the designated parameters. The current implementation only supports a single consumer registration. Each AbstractSocket represents a single socket, with CTOR called when the socket is created (e.g. with accept), onRead called when data is received (e.g. with recv) and DTOR when the socket is terminated (e.g. close). The consumer object can interact with the socket (e.g. send data out) using the sockfd provided to it. The consumer should not invoke socket operations that may cause recursion (e.g. invoking close). Specifically, to terminate the socket, the consumer needs to return flase from onRead.
 - Deployment: the current deployment model has SAL and RSFW compiled into a shared library file (.so/.dll), together with the FuncHook function hooking library. The platform specific SAL implementation contains a startup routine (\_init for Linux, DllMain for Windows) that invokes the FuncHook hooking API needed for the specific platform. The shared library needs to be injected into the target process (this functionality is not provided).
 
-Compiling (Linux):
+Compiling (Linux):\
 - g++ -shared -fPIC SAL_Linux.cpp RSFW.cpp -o RSFW.so -lfunchook
 
 Hints for running RSFW with a single web/proxy process:
