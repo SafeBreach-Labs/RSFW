@@ -1,5 +1,5 @@
-# RSFW
-Request Smuggling Firewall
+# RSFW (Amit Klein, Safebreach)
+Request Smuggling Firewall - a PoC for my BlackHat US 2020 paper [HTTP Request Smuggling in 2020](https://www.blackhat.com/us-20/briefings/schedule/#http-request-smuggling-in---new-variants-new-defenses-and-new-challenges-20019). 
 
 The Request Smuggling Firewall PoC project consists of two C++ cross-platform libraries: 
 - SAL (Socket Abstraction Layer): provides a cross-platform TCP socket abstraction layer for its "consumer", in the context of the process SAL resides in. The consumer registers a class object factory with SAL, and for each new socket opened in the process, SAL invokes the factory, obtains a new consumer object, and feeds it with socket events (`CTOR=accept, onRead=recv, DTOR=close/shutdown`). SAL has Linux-specific implementation and Windows-specific implementation, but its consumer API is platform-agnostic.
